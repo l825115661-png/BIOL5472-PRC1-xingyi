@@ -1,39 +1,39 @@
 # create the superclass
+from typing import Iterator
 class BioSequence:
 
     # constructor sets  shared attributes
-    def __init__(self, id, seq):
-        self._id = id
-        self._seq = seq.upper()
+    def __init__(self, id: str, seq: str):
+        self._id: str = id
+        self._seq: str = seq.upper()
 
     # getters for shared attributes
     # getter for id
     @property
-    def id(self):
+    def id(self) -> str:
         return self._id 
 
     # getter for seq
     @property
-    def seq(self):
+    def seq(self) -> str:
         return self._seq
     
     # special method shared by subclasses
     # prints the class attributes nicely
-    def __str__(self):
-        return f'Sequence Object: ID; {self.id}, \
-Seq; {self.seq}'
+    def __str__(self) -> str:
+        return f"Sequence Object: ID; {self.id}, Seq: {self.seq}"
     
     # returns the length of the sequence when len is called on an object
-    def __len__(self):
+    def __len__(self) -> int:
         return len(self.seq)
     
     # iterates over the sequence if a for loop is run on the class
-    def __iter__(self):
+    def __iter__(self) -> Iterator[str]:
         return iter(self.seq)
     
     # return a fasta string
-    def make_fasta(self):
-        return f'>{self.id}\n{self.seq}\n'
+    def make_fasta(self) -> str:
+        return f">{self.id}\n{self.seq}\n"
     
 # create the subclass
 # inherits from BioSequence
